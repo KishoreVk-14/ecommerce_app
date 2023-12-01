@@ -30,6 +30,19 @@ public class DbConnection {
         return null;
     }
 
+    public int updateQuery(String query){
+
+        try {
+            Statement statement=getStatement();
+            return statement.executeUpdate(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return 0;
+
+    }
+
     public static void main(String[] args) {
         DbConnection dbConnection=new DbConnection();
         ResultSet rs=dbConnection.getQuery("SELECT * FROM customer");
